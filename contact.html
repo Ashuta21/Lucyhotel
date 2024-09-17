@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="image/favicon.png" type="image/png">
+        <title>Lucy Hotel</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style1.css">
+
+        <link rel="stylesheet" href="css/responsive.css">
+         <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body style="font-size:20px;">
+        <!--================Header Area =================-->
+        <header class="header_area">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html" style="color: goldenrod; font-family:cambria;font-Size:40px;">Lucy Hotel</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="accomodation.html">Room</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="managepannel/reservation.php">Book</a></li>
+                            <li class="nav-item "><a class="nav-link" href="service.html">Service</a></li>
+                            <button class="btn btn-success" id="cont"><a href="contact.html" style="color:#fff;">Contact</a></button>
+
+                             
+                        </ul>
+                    </div> 
+                </nav>
+            </div>
+        </header>
+        <!--================Header Area =================-->
+        
+         
+        
+        <?php
+// Connect to the database
+$servername = "localhost";
+$username = "id21825503_hotel1";
+$password = "Sample@1";
+$dbname = "id21825503_hotel";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Process the form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $message = $_POST["message"];
+ 
+    // Insert the data into the 'bookings' table
+    $sql = "INSERT INTO contact (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
+ 
+    if (mysqli_query($conn, $sql)) {
+      	echo "<script type='text/javascript'> alert('You Have Successfully Sent a Message ')</script>";
+       echo "<script type='text/javascript'> window.location='index.php'</script>";
+
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
+
+mysqli_close($conn);
+?>
+<section class="contact-w3ls" id="contact">
+ 		<div class="  contact-w3-agile2 align-items-center">
+			<div class="contact-agileits" style="background-color:black;">
+  <br>
+  <br>
+  <p style="font-size:32px; color:goldenrod;">Contact us</p>
+  <br>
+     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
+         <input type="text" name="name" id="ff"placeholder="Enter Your Full Name"required><br><br>
+
+         <input type="email" name="email" id="ff" placeholder="Enter your Email"required><br><br>
+
+         <input type="text" name="phone"  id="ff" placeholder="Enter Your Phone No"required><br><br>
+
+          <textarea name="message" placeholder="Write something.." id="ff2" Required></textarea>
+<br>
+<br>
+        <input type="submit" value="Send" id="co">
+    </form>
+    <br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+ <br>
+<br>
+<br>
+<style>
+  
+  #contact{
+     width: 100%;
+    height: 600px;
+    text-align: center;
+  vertical-align: middle;
+  }
+  #ff{
+    width: 30%;
+ height: 50px;
+text-align: center;
+    outline: none;
+ border-color:goldenrod;
+}
+#ff2{
+  width: 30%;
+ height: 100px;
+text-align: center;
+    outline: none;
+  text-align:center;
+  border-color:goldenrod;
+}
+  #co{
+    width:15%; 
+    background-color: goldenrod; 
+    border:none; 
+    color:white;
+    height:40px;
+    font-size:20px;
+  border-radius:5px;
+  }
+  @media only screen and (max-width: 600px) {
+  #contact {
+ width:100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #ff {
+ width:90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #ff2 {
+ width:90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #co {
+ width:50%;
+  }
+}
+</style>
+         <!-- footer section start -->
+         <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+             <div class="footer-about">
+                <img src="image/about.jpg" alt="" style="width:70%;height:200px;border:solid;border-color:goldenrod;margin-left:15%;">
+                       </div>
+          </div>
+          <div class="col-md-3">
+            <div class="useful-link" style="text-align:center;">
+                <div class="use-links">
+                <p style="font-size:16px;color:goldenrod;">" Come Alone Or With Your Family Stay Here For One Night Or Weeks We Will Make You Feel Like You Are In Your Home "</p>
+                <h3 style="color:#Fff;">Lucy Hotel</h3>
+
+            </div>
+            </div>
+
+          </div>
+                    <div class="col-md-3">
+                        <div class="social-links"style="text-align:center;">
+              <h2 style="color:goldenrod;">Follow Us</h2>
+               
+              
+              <div class="social">
+                    <a href="#"><i class="fa fa-facebook-square" data-toggle="tooltip" data-placement="top" data-original-title="facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"  data-toggle="tooltip" data-placement="top" data-original-title="instragram"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="top" data-original-title="twitter"></i></a>
+                     <a href="#"><i class="fa fa-youtube-square" data-toggle="tooltip" data-placement="top" data-original-title="youtube"></i></a>
+                    </div>
+            </div>
+                    </div>
+          <div class="col-md-3">
+            <div class="address">
+              <h2 style="color:goldenrod;">Address</h2>
+               <div class="address-links" style="color:goldenrod;">
+                <li class="address1"><i class="fa fa-map-marker"></i> Menafesha-Dessie
+                  Ethiopia</li>
+                   <li><a href="+25190904500112"style="color:goldenrod;"><i class="fa fa-phone"></i>+251 90904500112</a></li>
+                   <li><a href=" mail@1234567.com"style="color:goldenrod;"><i class="fa fa-envelope"></i> info@lucyhotel.com</a></li>
+              </div>
+            </div>
+          </div>
+                  
+        </div>
+      </div>
+ 
+    </footer>
+    <!-- footer copy right section end -->
+     <!-- footer copy right section start -->
+     <section id="copy-right">
+      <div class="copy-right-sec"> 
+        Developed by <a href="https://t.me/ashenafits1/"style="color:crimson;text-decoration:underline;">Luna Tech
+        </a> 
+      </div>
+
+    </section>
+    <!-- footer copy right section end -->
+  <style>
+.social a{
+      display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color: goldenrod;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: black;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+   }
+   .address-links i{
+ 	width: 40px;
+	height: 35px;
+	cursor: pointer;
+	background-color: goldenrod;
+	border-radius: 2px;
+ 	font-size: 40px;
+	color: black;
+	text-align: center;
+	line-height: 30px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+   }
+    </style>
+          
+          
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
